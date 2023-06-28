@@ -33,12 +33,15 @@ jobs:
       with:
         ruby-version: 3.3
 
-    - name: Build and Deploy
+    - name: install
       working-directory: docs/jekyll
       run: |
         gem install bundler jekyll 
         bundle install
-        JEKYLL_ENV=production bundle exec jekyll build --source ${{github.workspace}}/docs/jekyll --destination ${{github.workspace}}/docs
+    - name: Build 
+      working-directory: docs/jekyll
+      run: |
+        JEKYLL_ENV=production bundle exec jekyll build --trace --source ${{github.workspace}}/docs/jekyll --destination ${{github.workspace}}/docs
         touch ${{github.workspace}}/docs/.nojekyll
 
     - name: Deploy to GitHub Pages
