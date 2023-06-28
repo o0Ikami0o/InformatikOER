@@ -9,6 +9,8 @@ jobs:
     container:
       image: docker://pandoc/latex:2.9
       options: --entrypoint=sh
+    permissions:
+      contents: write
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
@@ -18,13 +20,28 @@ jobs:
       run: |
         mkdir output  # create output dir
         for i in *.md; do pandoc  -f markdown -t pdf --file-scope -o output/$i.pdf $i; done
+    - name: Get current date
+      id: date
+      run: echo "::set-output name=date::$(date +'%Y_%m_%d')"
 
-
-    - name: Upload PDF artifact
-      uses: actions/upload-artifact@v2
+    - name: Create tag
+      uses: actions/github-script@v5
       with:
-        name: converted-pdf
-        path: output/
+        script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'refs/tags/${{steps.date.outputs.date}}',
+              sha: context.sha
+            })
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: ${{steps.date.outputs.date}}
+        files: |
+          output/*
+    
+    
 
   build:
     runs-on: ubuntu-latest
