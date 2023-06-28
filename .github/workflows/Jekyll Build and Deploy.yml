@@ -1,0 +1,52 @@
+name: Jekyll Build and Deploy
+
+on:
+  workflow_dispatch
+
+jobs:
+  convert_to_pdf:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Pandoc
+      run: sudo apt-get update && sudo apt-get install -y pandoc
+
+    - name: Convert Markdown to PDF
+      run: |
+        mkdir pdf
+        pandoc *.md -o pdf/output.pdf
+
+    - name: Upload PDF artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: converted-pdf
+        path: pdf/output.pdf
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.7
+
+    - name: Build and Deploy
+      run: |
+        gem install bundler jekyll
+        bundle install
+        JEKYLL_ENV=production bundle exec jekyll build --source ${{github.workspace}}/docs/jekyll --destination ${{github.workspace}}/docs
+        touch ${{github.workspace}}/docs/.nojekyll
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ${{github.workspace}}/docs/
+        publish_branch: gh-pages

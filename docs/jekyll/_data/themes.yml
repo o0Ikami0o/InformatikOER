@@ -1,0 +1,99 @@
+- name: Datenbanken
+  tags: [DBMS, Datenintegrität, SQL, Daten und ihre Spuren]
+  author: Rico
+  topic: Daten und ihre Spuren
+  liascript: liascr
+  Markdown: "link PDF"
+  PDF: "link PDF"
+  WORD: "LinkWord"
+  EPUB: "LinkEpub"
+  summary: Hier werden Informationen zu Datenbanken zu finden sein, diese koennten sich als nuetzlich erweisen
+- name: C/C++
+  tags: [Variablen, High-Level Language, Schleifen, Switch-Case]
+  liascript: liascr
+  Markdown: "link PDF"
+  PDF: "link PDF"
+  WORD: "LinkWord"
+  EPUB: "LinkEpub"
+  summary: C ist eine imperative u. prozedurale Sprache. Dennis Ritchie entwickelte diese in den 1970 Jahren in den Bell-Labs. C++ wurde Ende der 1970er von Bjarne Stroustrup bei AT&T als Erweiterung von C bereitgestellt. C wurde hier unterandern um Objektorintierung erweitert.
+- name: Java
+  link: /about.html
+  key: [value1, value2, value3]
+- name: Automaten
+  link: /about.html
+  key: [value1, value2, value3]
+- name: De-morgansche Gesetze
+  link: /about.html
+  key: [value1, value2, value3]
+- name: Datenbanken
+  tags: [DBMS, Datenintegrität, SQL]
+  liascript: liascr
+  Markdown: "link PDF"
+  PDF: "link PDF"
+  WORD: "LinkWord"
+  EPUB: "LinkEpub"
+  summary: Hier werden Informationen zu Datenbanken zu finden sein, diese koennten sich als nuetzlich erweisen
+- name: Datenbanken
+  tags: [DBMS, Datenintegrität, SQL]
+  liascript: liascr
+  Markdown: "link PDF"
+  PDF: "link PDF"
+  WORD: "LinkWord"
+  EPUB: "LinkEpub"
+  summary: Hier werden Informationen zu Datenbanken zu finden sein, diese koennten sich als nuetzlich erweisen
+- name: Datenbanken
+  tags: [DBMS, Datenintegrität, SQL]
+  liascript: liascr
+  Markdown: "link PDF"
+  PDF: "link PDF"
+  WORD: "LinkWord"
+  EPUB: "LinkEpub"
+  summary: Hier werden Informationen zu Datenbanken zu finden sein, diese koennten sich als nuetzlich erweisen
+- name: Datenbanken
+  tags: [DBMS, Datenintegrität, SQL]
+  liascript: liascr
+  Markdown: "link PDF"
+  PDF: "link PDF"
+  WORD: "LinkWord"
+  EPUB: "LinkEpub"
+  summary: Hier werden Informationen zu Datenbanken zu finden sein, diese koennten sich als nuetzlich erweisen
+- name: C/C++
+  key: [Variablen, High-Level Language, Schleifen, Switch-Case]
+  liascript: liascr
+  Markdown: "link PDF"
+  PDF: "link PDF"
+  WORD: "LinkWord"
+  EPUB: "LinkEpub"
+  summary: C ist eine imperative u. prozedurale Sprache. Dennis Ritchie entwickelte diese in den 1970 Jahren in den Bell-Labs. C++ wurde Ende der 1970er von Bjarne Stroustrup bei AT&T als Erweiterung von C bereitgestellt. C wurde hier unterandern um Objektorintierung erweitert.
+- name: C/C++
+  key: [Variablen, High-Level Language, Schleifen, Switch-Case]
+  liascript: liascr
+  Markdown: "link PDF"
+  PDF: "link PDF"
+  WORD: "LinkWord"
+  EPUB: "LinkEpub"
+  summary: C ist eine imperative u. prozedurale Sprache. Dennis Ritchie entwickelte diese in den 1970 Jahren in den Bell-Labs. C++ wurde Ende der 1970er von Bjarne Stroustrup bei AT&T als Erweiterung von C bereitgestellt. C wurde hier unterandern um Objektorintierung erweitert.
+- name: C/C++
+  key: [Variablen, High-Level Language, Schleifen, Switch-Case]
+  liascript: liascr
+  Markdown: "link PDF"
+  PDF: "link PDF"
+  WORD: "LinkWord"
+  EPUB: "LinkEpub"
+  summary: C ist eine imperative u. prozedurale Sprache. Dennis Ritchie entwickelte diese in den 1970 Jahren in den Bell-Labs. C++ wurde Ende der 1970er von Bjarne Stroustrup bei AT&T als Erweiterung von C bereitgestellt. C wurde hier unterandern um Objektorintierung erweitert.
+- name: C/C++
+  key: [Variablen, High-Level Language, Schleifen, Switch-Case]
+  liascript: liascr
+  Markdown: "link PDF"
+  PDF: "link PDF"
+  WORD: "LinkWord"
+  EPUB: "LinkEpub"
+  summary: C ist eine imperative u. prozedurale Sprache. Dennis Ritchie entwickelte diese in den 1970 Jahren in den Bell-Labs. C++ wurde Ende der 1970er von Bjarne Stroustrup bei AT&T als Erweiterung von C bereitgestellt. C wurde hier unterandern um Objektorintierung erweitert.
+- name: C/C++
+  key: [Variablen, High-Level Language, Schleifen, Switch-Case]
+  liascript: liascr
+  Markdown: "link PDF"
+  PDF: "link PDF"
+  WORD: "LinkWord"
+  EPUB: "LinkEpub"
+  summary: C ist eine imperative u. prozedurale Sprache. Dennis Ritchie entwickelte diese in den 1970 Jahren in den Bell-Labs. C++ wurde Ende der 1970er von Bjarne Stroustrup bei AT&T als Erweiterung von C bereitgestellt. C wurde hier unterandern um Objektorintierung erweitert.
