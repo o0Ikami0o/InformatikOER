@@ -22,7 +22,7 @@ jobs:
         for i in *.md; do pandoc  -f markdown -t pdf --file-scope -o output/$i.pdf $i; done
     - name: Get current date
       id: date
-      run: echo "::set-output name=date::$(date +'%Y_%m_%d')"
+      run: echo "date=$(date +'%Y_%m_%d')" >> "$GITHUB_OUTPUT"
 
     - name: Create tag
       uses: actions/github-script@v5
