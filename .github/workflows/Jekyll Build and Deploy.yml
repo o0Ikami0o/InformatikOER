@@ -18,7 +18,7 @@ jobs:
         # this will also include README.md
         echo "files=$(printf '"%s" ' *.md)" > $GITHUB_OUTPUT
 
-    - uses: docker://pandoc/core:2.9
+    - uses: docker://pandoc/latex:2.9
       with:
         args:  -f markdown -t pdf --file-scope -o output.pdf ${{ steps.files_list.outputs.files }}
 
@@ -50,11 +50,11 @@ jobs:
       run: |
         mkdir ../build
         JEKYLL_ENV=production bundle exec jekyll build --trace --source ${{github.workspace}}/docs/jekyll --destination ${{github.workspace}}/docs/build
-        touch ${{github.workspace}}/docs/.nojekyll
+        touch ${{github.workspace}}/docs/build/.nojekyll
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.ACCESS_TOKEN }}
-        publish_dir: ${{github.workspace}}/docs/
+        publish_dir: ${{github.workspace}}/docs/build
         publish_branch: gh-pages
