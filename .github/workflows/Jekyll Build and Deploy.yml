@@ -20,13 +20,13 @@ jobs:
 
     - uses: docker://pandoc/latex:2.9
       with:
-        args:  -f markdown -t pdf --file-scope -o pdf/output.pdf ${{ steps.files_list.outputs.files }}
+        args:  -f markdown -t pdf --file-scope -o output/output.pdf ${{ steps.files_list.outputs.files }}
 
     - name: Upload PDF artifact
       uses: actions/upload-artifact@v2
       with:
         name: converted-pdf
-        path: pdf/
+        path: output/
 
   build:
     runs-on: ubuntu-latest
