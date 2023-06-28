@@ -1,7 +1,7 @@
 name: Jekyll Build and Deploy
 
 on:
-  workflow_dispatch
+  [workflow_dispatch, push]
 
 jobs:
   convert_to_pdf:
@@ -31,7 +31,7 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.3
+        ruby-version: 3.0
 
     - name: install
       working-directory: docs/jekyll
