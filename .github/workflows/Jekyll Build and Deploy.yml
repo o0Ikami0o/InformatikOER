@@ -6,7 +6,9 @@ on:
 jobs:
   convert_to_pdf:
     runs-on: ubuntu-latest
-
+    container:
+      image: docker://pandoc/latex:2.9
+      options: --entrypoint=sh
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
@@ -15,12 +17,8 @@ jobs:
       id: files_list
       run: |
         mkdir output  # create output dir
-        # this will also include README.md
-        echo "files=$(printf '"%s" ' *.md)" > $GITHUB_OUTPUT
+        $ for i in *.md;do pandoc  -f markdown -t pdf --file-scope -o output/$i.pdf $i; done
 
-    - uses: docker://pandoc/latex:2.9
-      with:
-        args:  -f markdown -t pdf --file-scope -o output/output.pdf ${{ steps.files_list.outputs.files }}
 
     - name: Upload PDF artifact
       uses: actions/upload-artifact@v2
