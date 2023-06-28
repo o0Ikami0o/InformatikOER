@@ -17,7 +17,7 @@ jobs:
       id: files_list
       run: |
         mkdir output  # create output dir
-        $ for i in *.md;do pandoc  -f markdown -t pdf --file-scope -o output/$i.pdf $i; done
+        $ for i in *.md; do pandoc  -f markdown -t pdf --file-scope -o output/$i.pdf $i; done
 
 
     - name: Upload PDF artifact
