@@ -1,0 +1,78 @@
+---
+layout: default
+---
+
+<div class="container">
+  
+  <div class="row w-50">
+    <form>
+      <div class="d-flex mb-3">
+        <input class="form-control me-2" type="search" id="Search" oninput="search()" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Clear</button>
+      </div>
+      
+      <div class="mb-3">
+        <label>Lernfeld</label>
+        <select type="select" class="form-select" id="topic-search" multiple oninput="search()">
+          {% for topic in site.data.topics %}
+            <option value="{{topic | slugify}}">{{topic}}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </form>
+  </div>
+  <div class="row g-3 row-cols-1 row-cols-sm-1 row-cols-md-4">
+    {% for item in site.data.themes %}
+    <div class="col">
+      <div
+        class="card shadow-sm h-100 target"
+        data-tags="{{ item.tags | join ' ' }}"
+        data-author="{{ item.author | slugify }}"
+        data-topic="{{ item.topic | slugify }}"
+      >
+        <div class="card-body">
+          <h4>
+            <a
+              href="{{item.liascript}}"
+              class="link-secondary link-offset-5 link-underline-opacity-100-hover"
+              >{{item.name}}</a
+            >
+          </h4>
+          <p class="card-text">{{item.summary}}</p>
+        </div>
+        <div class="card-footer">
+          <div class="dropdown bg-transparent border-success">
+            <a
+              class="btn btn-secondary dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              download
+            </a>
+
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="{{ item.Markdown }}">Markdown</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{{ item.Word }}">Word</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{{ item.PDF }}">PDF</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{{ item.EPUB }}">EPUB</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{{ item.Latex }}">Latex</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>

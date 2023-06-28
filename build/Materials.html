@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OERit</title>
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      function search() {
+
+        // gets input tags
+        searchInput = document.getElementById("Search");
+        topicsInput = document.getElementById("topic-search");
+
+
+        // get filter data from tags
+        textFilter = searchInput.value.toUpperCase();
+        const wordsFilter = textFilter.split(" ");
+        // gets all selected topics
+        let topicFilter = Array.from(topicsInput.options)
+          .filter((o)=> o.selected)
+          .map((o)=>o.value);
+
+        
+        // loops through all cards
+        for (div of document.getElementsByClassName("target")) {
+          const topic = div.dataset.topic;
+          // gets html of card (inclusive tags, topics and authors)
+          const toSearch = div.parentElement.innerHTML.toUpperCase();
+
+          // checks if all words are matching of the cards
+          let matches = true;
+          for( word of wordsFilter){
+            // skip words which have lenghts of 0
+            if(word.length < 1){
+              continue;
+            }
+            const missing = toSearch.indexOf(word) == -1;
+            if(missing){
+              matches = false;
+              break;
+            }
+          }
+
+          // hides or displays all matching cards
+          if (
+            matches &&
+            (topicFilter.length == 0 || topicFilter.indexOf(topic)>-1)
+          ) {
+            /*||
+            tags.indexOf(filter) > -1
+            */
+            div.parentElement.classList.remove("d-none");
+          } else {
+            div.parentElement.classList.add("d-none");
+          }
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg bg-light fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">OERit</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/index">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/Materials">Material</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+    <main><div class="container">
+  
+  <div class="row w-50">
+    <form>
+      <div class="d-flex mb-3">
+        <input class="form-control me-2" type="search" id="Search" oninput="search()" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Clear</button>
+      </div>
+      
+      <div class="mb-3">
+        <label>Lernfeld</label>
+        <select type="select" class="form-select" id="topic-search" multiple oninput="search()">
+          
+            <option value="daten-und-ihre-spuren">Daten und ihre Spuren</option>
+          
+            <option value="computerkompetenz">Computerkompetenz</option>
+          
+            <option value="algoritmisches-problemeloesen">Algoritmisches Problemeloesen</option>
+          
+            <option value="automatisierte-prozesse">Automatisierte Prozesse</option>
+          
+            <option value="grundlagen-der-algorithmik">Grundlagen der Algorithmik</option>
+          
+            <option value="informationen-und-daten">Informationen und Daten</option>
+          
+            <option value="automaten-und-sprachen">Automaten und Sprachen</option>
+          
+        </select>
+      </div>
+    </form>
+  </div>
+  <div class="row g-3 row-cols-1 row-cols-sm-1 row-cols-md-4">
+    
+    <div class="col">
+      <div
+        class="card shadow-sm h-100 target"
+        data-tags="DBMS Datenintegrität SQL Daten und ihre Spuren"
+        data-author="rico"
+        data-topic="daten-und-ihre-spuren"
+      >
+        <div class="card-body">
+          <h4>
+            <a
+              href="liascr"
+              class="link-secondary link-offset-5 link-underline-opacity-100-hover"
+              >Datenbanken</a
+            >
+          </h4>
+          <p class="card-text">Hier werden Informationen zu Datenbanken zu finden sein, diese koennten sich als nuetzlich erweisen</p>
+        </div>
+        <div class="card-footer">
+          <div class="dropdown bg-transparent border-success">
+            <a
+              class="btn btn-secondary dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              download
+            </a>
+
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="link PDF">Markdown</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">Word</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="link PDF">PDF</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="LinkEpub">EPUB</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">Latex</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col">
+      <div
+        class="card shadow-sm h-100 target"
+        data-tags="Variablen High-Level Language Schleifen Switch-Case"
+        data-author=""
+        data-topic=""
+      >
+        <div class="card-body">
+          <h4>
+            <a
+              href="liascr"
+              class="link-secondary link-offset-5 link-underline-opacity-100-hover"
+              >C/C++</a
+            >
+          </h4>
+          <p class="card-text">C ist eine imperative u. prozedurale Sprache. Dennis Ritchie entwickelte diese in den 1970 Jahren in den Bell-Labs. C++ wurde Ende der 1970er von Bjarne Stroustrup bei AT&T als Erweiterung von C bereitgestellt. C wurde hier unterandern um Objektorintierung erweitert.</p>
+        </div>
+        <div class="card-footer">
+          <div class="dropdown bg-transparent border-success">
+            <a
+              class="btn btn-secondary dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              download
+            </a>
+
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="link PDF">Markdown</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">Word</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="link PDF">PDF</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="LinkEpub">EPUB</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">Latex</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col">
+      <div
+        class="card shadow-sm h-100 target"
+        data-tags=""
+        data-author=""
+        data-topic=""
+      >
+        <div class="card-body">
+          <h4>
+            <a
+              href=""
+              class="link-secondary link-offset-5 link-underline-opacity-100-hover"
+              >Java</a
+            >
+          </h4>
+          <p class="card-text"></p>
+        </div>
+        <div class="card-footer">
+          <div class="dropdown bg-transparent border-success">
+            <a
+              class="btn btn-secondary dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              download
+            </a>
+
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="">Markdown</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">Word</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">PDF</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">EPUB</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">Latex</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col">
+      <div
+        class="card shadow-sm h-100 target"
+        data-tags=""
+        data-author=""
+        data-topic=""
+      >
+        <div class="card-body">
+          <h4>
+            <a
+              href=""
+              class="link-secondary link-offset-5 link-underline-opacity-100-hover"
+              >Automaten</a
+            >
+          </h4>
+          <p class="card-text"></p>
+        </div>
+        <div class="card-footer">
+          <div class="dropdown bg-transparent border-success">
+            <a
+              class="btn btn-secondary dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              download
+            </a>
+
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="">Markdown</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">Word</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">PDF</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">EPUB</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">Latex</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col">
+      <div
+        class="card shadow-sm h-100 target"
+        data-tags=""
+        data-author=""
+        data-topic=""
+      >
+        <div class="card-body">
+          <h4>
+            <a
+              href=""
+              class="link-secondary link-offset-5 link-underline-opacity-100-hover"
+              >De-morgansche Gesetze</a
+            >
+          </h4>
+          <p class="card-text"></p>
+        </div>
+        <div class="card-footer">
+          <div class="dropdown bg-transparent border-success">
+            <a
+              class="btn btn-secondary dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              download
+            </a>
+
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="">Markdown</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">Word</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">PDF</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">EPUB</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">Latex</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col">
+      <div
+        class="card shadow-sm h-100 target"
+        data-tags="DBMS Datenintegrität SQL"
+        data-author=""
+        data-topic=""
+      >
+        <div class="card-body">
+          <h4>
+            <a
+              href="liascr"
+              class="link-secondary link-offset-5 link-underline-opacity-100-hover"
+              >Datenbanken</a
+            >
+          </h4>
+          <p class="card-text">Hier werden Informationen zu Datenbanken zu finden sein, diese koennten sich als nuetzlich erweisen</p>
+        </div>
+        <div class="card-footer">
+          <div class="dropdown bg-transparent border-success">
+            <a
+              class="btn btn-secondary dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              download
+            </a>
+
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="link PDF">Markdown</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">Word</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="link PDF">PDF</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="LinkEpub">EPUB</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">Latex</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col">
+      <div
+        class="card shadow-sm h-100 target"
+        data-tags="DBMS Datenintegrität SQL"
+        data-author=""
+        data-topic=""
+      >
+        <div class="card-body">
+          <h4>
+            <a
+              href="liascr"
+              class="link-secondary link-offset-5 link-underline-opacity-100-hover"
+              >Datenbanken</a
+            >
+          </h4>
+          <p class="card-text">Hier werden Informationen zu Datenbanken zu finden sein, diese koennten sich als nuetzlich erweisen</p>
+        </div>
+        <div class="card-footer">
+          <div class="dropdown bg-transparent border-success">
+            <a
+              class="btn btn-secondary dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              download
+            </a>
+
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="link PDF">Markdown</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">Word</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="link PDF">PDF</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="LinkEpub">EPUB</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">Latex</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col">
+      <div
+        class="card shadow-sm h-100 target"
+        data-tags="DBMS Datenintegrität SQL"
+        data-author=""
+        data-topic=""
+      >
+        <div class="card-body">
+          <h4>
+            <a
+              href="liascr"
+              class="link-secondary link-offset-5 link-underline-opacity-100-hover"
+              >Datenbanken</a
+            >
+          </h4>
+          <p class="card-text">Hier werden Informationen zu Datenbanken zu finden sein, diese koennten sich als nuetzlich erweisen</p>
+        </div>
+        <div class="card-footer">
+          <div class="dropdown bg-transparent border-success">
+            <a
+              class="btn btn-secondary dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              download
+            </a>
+
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="link PDF">Markdown</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">Word</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="link PDF">PDF</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="LinkEpub">EPUB</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">Latex</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col">
+      <div
+        class="card shadow-sm h-100 target"
+        data-tags="DBMS Datenintegrität SQL"
+        data-author=""
+        data-topic=""
+      >
+        <div class="card-body">
+          <h4>
+            <a
+              href="liascr"
+              class="link-secondary link-offset-5 link-underline-opacity-100-hover"
+              >Datenbanken</a
+            >
+          </h4>
+          <p class="card-text">Hier werden Informationen zu Datenbanken zu finden sein, diese koennten sich als nuetzlich erweisen</p>
+        </div>
+        <div class="card-footer">
+          <div class="dropdown bg-transparent border-success">
+            <a
+              class="btn btn-secondary dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              download
+            </a>
+
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="link PDF">Markdown</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">Word</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="link PDF">PDF</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="LinkEpub">EPUB</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">Latex</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col">
+      <div
+        class="card shadow-sm h-100 target"
+        data-tags=""
+        data-author=""
+        data-topic=""
+      >
+        <div class="card-body">
+          <h4>
+            <a
+              href="liascr"
+              class="link-secondary link-offset-5 link-underline-opacity-100-hover"
+              >C/C++</a
+            >
+          </h4>
+          <p class="card-text">C ist eine imperative u. prozedurale Sprache. Dennis Ritchie entwickelte diese in den 1970 Jahren in den Bell-Labs. C++ wurde Ende der 1970er von Bjarne Stroustrup bei AT&T als Erweiterung von C bereitgestellt. C wurde hier unterandern um Objektorintierung erweitert.</p>
+        </div>
+        <div class="card-footer">
+          <div class="dropdown bg-transparent border-success">
+            <a
+              class="btn btn-secondary dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              download
+            </a>
+
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="link PDF">Markdown</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">Word</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="link PDF">PDF</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="LinkEpub">EPUB</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">Latex</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col">
+      <div
+        class="card shadow-sm h-100 target"
+        data-tags=""
+        data-author=""
+        data-topic=""
+      >
+        <div class="card-body">
+          <h4>
+            <a
+              href="liascr"
+              class="link-secondary link-offset-5 link-underline-opacity-100-hover"
+              >C/C++</a
+            >
+          </h4>
+          <p class="card-text">C ist eine imperative u. prozedurale Sprache. Dennis Ritchie entwickelte diese in den 1970 Jahren in den Bell-Labs. C++ wurde Ende der 1970er von Bjarne Stroustrup bei AT&T als Erweiterung von C bereitgestellt. C wurde hier unterandern um Objektorintierung erweitert.</p>
+        </div>
+        <div class="card-footer">
+          <div class="dropdown bg-transparent border-success">
+            <a
+              class="btn btn-secondary dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              download
+            </a>
+
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="link PDF">Markdown</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">Word</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="link PDF">PDF</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="LinkEpub">EPUB</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">Latex</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col">
+      <div
+        class="card shadow-sm h-100 target"
+        data-tags=""
+        data-author=""
+        data-topic=""
+      >
+        <div class="card-body">
+          <h4>
+            <a
+              href="liascr"
+              class="link-secondary link-offset-5 link-underline-opacity-100-hover"
+              >C/C++</a
+            >
+          </h4>
+          <p class="card-text">C ist eine imperative u. prozedurale Sprache. Dennis Ritchie entwickelte diese in den 1970 Jahren in den Bell-Labs. C++ wurde Ende der 1970er von Bjarne Stroustrup bei AT&T als Erweiterung von C bereitgestellt. C wurde hier unterandern um Objektorintierung erweitert.</p>
+        </div>
+        <div class="card-footer">
+          <div class="dropdown bg-transparent border-success">
+            <a
+              class="btn btn-secondary dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              download
+            </a>
+
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="link PDF">Markdown</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">Word</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="link PDF">PDF</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="LinkEpub">EPUB</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">Latex</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col">
+      <div
+        class="card shadow-sm h-100 target"
+        data-tags=""
+        data-author=""
+        data-topic=""
+      >
+        <div class="card-body">
+          <h4>
+            <a
+              href="liascr"
+              class="link-secondary link-offset-5 link-underline-opacity-100-hover"
+              >C/C++</a
+            >
+          </h4>
+          <p class="card-text">C ist eine imperative u. prozedurale Sprache. Dennis Ritchie entwickelte diese in den 1970 Jahren in den Bell-Labs. C++ wurde Ende der 1970er von Bjarne Stroustrup bei AT&T als Erweiterung von C bereitgestellt. C wurde hier unterandern um Objektorintierung erweitert.</p>
+        </div>
+        <div class="card-footer">
+          <div class="dropdown bg-transparent border-success">
+            <a
+              class="btn btn-secondary dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              download
+            </a>
+
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="link PDF">Markdown</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">Word</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="link PDF">PDF</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="LinkEpub">EPUB</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">Latex</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col">
+      <div
+        class="card shadow-sm h-100 target"
+        data-tags=""
+        data-author=""
+        data-topic=""
+      >
+        <div class="card-body">
+          <h4>
+            <a
+              href="liascr"
+              class="link-secondary link-offset-5 link-underline-opacity-100-hover"
+              >C/C++</a
+            >
+          </h4>
+          <p class="card-text">C ist eine imperative u. prozedurale Sprache. Dennis Ritchie entwickelte diese in den 1970 Jahren in den Bell-Labs. C++ wurde Ende der 1970er von Bjarne Stroustrup bei AT&T als Erweiterung von C bereitgestellt. C wurde hier unterandern um Objektorintierung erweitert.</p>
+        </div>
+        <div class="card-footer">
+          <div class="dropdown bg-transparent border-success">
+            <a
+              class="btn btn-secondary dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              download
+            </a>
+
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="link PDF">Markdown</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">Word</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="link PDF">PDF</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="LinkEpub">EPUB</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">Latex</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+</main>
+    <footer class="bg-light text-center text-lg-start fixed-bottom">
+
+    <!-- Grid container -->
+  
+    <!-- Copyright -->
+    <div class="text-center p-3">
+      <a class="text-dark" href="https://github.com/OERit">OERit</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+plugins:
+  - jekyll-autoprefixer
+
+autoprefixer:
+  browsers:
+    - last 4 versions
+#    - Safari > 2
+
+minima:
+  skin: dark  # having no effect
+
+theme: minima
