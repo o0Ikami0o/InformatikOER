@@ -31,7 +31,7 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.0
+        ruby-version: "3.0"
 
     - name: install
       working-directory: docs/jekyll
@@ -41,7 +41,8 @@ jobs:
     - name: Build 
       working-directory: docs/jekyll
       run: |
-        JEKYLL_ENV=production bundle exec jekyll build --trace --source ${{github.workspace}}/docs/jekyll --destination ${{github.workspace}}/docs
+        mkdir .. /build
+        JEKYLL_ENV=production bundle exec jekyll build --trace --source ${{github.workspace}}/docs/jekyll --destination ${{github.workspace}}/docs/build
         touch ${{github.workspace}}/docs/.nojekyll
 
     - name: Deploy to GitHub Pages
