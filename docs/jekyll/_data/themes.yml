@@ -9,6 +9,7 @@
   summary: Hier werden Informationen zu Datenbanken zu finden sein, diese koennten sich als nuetzlich erweisen
 - name: C/C++
   tags: [Variablen, High-Level Language, Schleifen, Switch-Case]
+  topic: Grundlagen der Algorithmik
   liascript: liascr
   Markdown: "link PDF"
   PDF: "link PDF"
@@ -16,17 +17,18 @@
   EPUB: "LinkEpub"
   summary: C ist eine imperative u. prozedurale Sprache. Dennis Ritchie entwickelte diese in den 1970 Jahren in den Bell-Labs. C++ wurde Ende der 1970er von Bjarne Stroustrup bei AT&T als Erweiterung von C bereitgestellt. C wurde hier unterandern um Objektorintierung erweitert.
 - name: Java
+  topic: Grundlagen der Algorithmik
   link: /about.html
-  key: [value1, value2, value3]
+  tags: [laufzeitumgebung, minecraft]
   summary: Hier werden Informationen zu Java
 - name: Automaten
+  topic: Automaten und Sprachen
   link: /about.html
-  key: [value1, value2, value3]
 - name: De-morgansche Gesetze
   link: /about.html
-  key: [value1, value2, value3]
 - name: Go
-  tags: [DBMS, Datenintegrität, SQL]
+  topic: Grundlagen der Algorithmik
+  tags: [GoLand, google, Web]
   liascript: liascr
   Markdown: "link PDF"
   PDF: "link PDF"
