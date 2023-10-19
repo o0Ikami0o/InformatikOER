@@ -10,7 +10,7 @@
 - name: C/C++
   tags: [Variablen, High-Level Language, Schleifen, Switch-Case]
   topic: Grundlagen der Algorithmik
-  liascript: liascr
+  liascript: https://liascript.github.io/course/?https://raw.githubusercontent.com/o0Ikami0o/3D-Druck_CAD_Mikrocontroller_Einfuerhfung/main/3D-Druck_CAD_Mikrocontroller_Einfuerhfung.md?token=GHSAT0AAAAAACJDOX235DALA4MCOFUW5G22ZJRBYOA#1
   Markdown: "link PDF"
   PDF: "link PDF"
   WORD: "LinkWord"
@@ -59,30 +59,6 @@
   WORD: "LinkWord"
   EPUB: "LinkEpub"
   summary: Hier werden Informationen zu Prolog zu finden sein
-- name: C/C++
-  key: [Variablen, High-Level Language, Schleifen, Switch-Case]
-  liascript: liascr
-  Markdown: "link PDF"
-  PDF: "link PDF"
-  WORD: "LinkWord"
-  EPUB: "LinkEpub"
-  summary: C ist eine imperative u. prozedurale Sprache. Dennis Ritchie entwickelte diese in den 1970 Jahren in den Bell-Labs. C++ wurde Ende der 1970er von Bjarne Stroustrup bei AT&T als Erweiterung von C bereitgestellt. C wurde hier unterandern um Objektorintierung erweitert.
-- name: C/C++
-  key: [Variablen, High-Level Language, Schleifen, Switch-Case]
-  liascript: liascr
-  Markdown: "link PDF"
-  PDF: "link PDF"
-  WORD: "LinkWord"
-  EPUB: "LinkEpub"
-  summary: C ist eine imperative u. prozedurale Sprache. Dennis Ritchie entwickelte diese in den 1970 Jahren in den Bell-Labs. C++ wurde Ende der 1970er von Bjarne Stroustrup bei AT&T als Erweiterung von C bereitgestellt. C wurde hier unterandern um Objektorintierung erweitert.
-- name: C/C++
-  key: [Variablen, High-Level Language, Schleifen, Switch-Case]
-  liascript: liascr
-  Markdown: "link PDF"
-  PDF: "link PDF"
-  WORD: "LinkWord"
-  EPUB: "LinkEpub"
-  summary: C ist eine imperative u. prozedurale Sprache. Dennis Ritchie entwickelte diese in den 1970 Jahren in den Bell-Labs. C++ wurde Ende der 1970er von Bjarne Stroustrup bei AT&T als Erweiterung von C bereitgestellt. C wurde hier unterandern um Objektorintierung erweitert.
 - name: C/C++
   key: [Variablen, High-Level Language, Schleifen, Switch-Case]
   liascript: liascr
